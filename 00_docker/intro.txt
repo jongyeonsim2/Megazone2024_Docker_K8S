@@ -132,3 +132,47 @@
       -d  데몬으로 실행
       -p 1521:1521 할당된 네트워크 의 port no
       -p 8081:81   host os 에서 h2에 접속할 때 사용할 port no
+      -e 컨테이너를 생성할 때 전달할 환경변수.
+         환경변수가 여러개라면 -e 옵션을 여러번 사용
+      H2_OPTIONS="-ifNotExists"  h2 데이터베이스 생성을 위한 옵션
+
+    docker images  h2 image 가 pull 되었는지 확인
+
+    docker exec -it h2 /bin/bash
+
+    cd /opt/h2/bin
+    ls -al
+    java -cp h2-2.1.214.jar org.h2.tools.Shell
+
+    아래의 두 ddl 을 브라우저에서 실행 후, 접속한 컨테이너 터미널에서  조회.
+    CREATE TABLE TEST(ID INT PRIMARY KEY, NAME VARCHAR(255));
+    CREATE TABLE TEST100(ID INT PRIMARY KEY, NAME VARCHAR(255));
+
+    터미널에서 show tables 로 실행해서
+    브라우저에서 생성한 테이블이 조회가 되는 지 확인.
+
+7. 6 번에서 수행한 작업을 깨끗하게 clear 하려고 하는 경우.
+   - docker network 생성
+   - h2 image pull
+   - h2 image container
+
+   - 삭제 순서
+     container -> network -> image
+
+     docker images 로 삭제할 이미지 의 IMAGE ID 조회
+     docker rmi -f IMAGE ID => 강제 삭제가 안되는 경우. 컨테이너부터 종료시켜야 함.
+
+     docker stop CONTAINER_ID => container 종료 성공
+
+     docker rmi -f IMAGE ID => 이미지 삭제 성공
+
+     docker images
+
+     docker network rm msa-network
+
+     docker network ls
+
+
+
+
+
