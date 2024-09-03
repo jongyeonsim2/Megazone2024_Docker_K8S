@@ -91,7 +91,7 @@
      다운타임없이 쉽고 빠르게 릴리즈 및 업데이트할 수 있다.
      => 무중단 배포(업그레이드) => k8s의 레플리카셋이용.
 
-6. docker container 서비스
+6. docker container 서비스 = docker network + h2 db container
    docker pull busybox // docker hub 이미지 가져오기
    docker images       // 로컬의 이미지 목록 조회
    docker run busybox  // 이미지를 컨테이너로 실행
@@ -135,6 +135,8 @@
       -e 컨테이너를 생성할 때 전달할 환경변수.
          환경변수가 여러개라면 -e 옵션을 여러번 사용
       H2_OPTIONS="-ifNotExists"  h2 데이터베이스 생성을 위한 옵션
+      --name=h2 생성할 컨테이너의 이름
+      oscarfonts/h2 생성할 컨테이너로 사용될 이미지
 
     docker images  h2 image 가 pull 되었는지 확인
 
@@ -150,6 +152,9 @@
 
     터미널에서 show tables 로 실행해서
     브라우저에서 생성한 테이블이 조회가 되는 지 확인.
+
+    docker images
+    docker container ls
 
 7. 6 번에서 수행한 작업을 깨끗하게 clear 하려고 하는 경우.
    - docker network 생성
@@ -172,7 +177,31 @@
 
      docker network ls
 
+8. docker container 서비스 = h2 db container ( docker network 사용하지 않음 )
+
+   [ 6 번에서 사용되었던 명령어 ]
+   docker run --network msa-network -d -p 1521:1521 -p 8081:81 -e H2_OPTIONS="-ifNotExists" --name=h2 oscarfonts/h2
+
+   여기서 부터 8번 실습 내용 시작.
+   docker run -d -p 8081:81 -e H2_OPTIONS="-ifNotExists" --name=h2 oscarfonts/h2
+         => --name=h2 원인임. h2 는 다른 컨테이너의 이름.
+
+   docker run -d -p 8081:81 -e H2_OPTIONS="-ifNotExists" --name=h2-1 oscarfonts/h2
+         => 8081:81 원인임. 8081 port no 는 다른곳에서 사용중임.
+
+   docker run -d -p 8082:81 -e H2_OPTIONS="-ifNotExists" --name=h2-2 oscarfonts/h2
+
+
+   ******************** MSA 할 때 중요한 고려 사항이 됨. ********************
+   MSA 구성요소는 결구 java 로 빌드된 여러개의 jar 이고, 
+   이 여러개의 jar 가 각각의 docker image 로 만들어지게 되고,
+   그리고, 이 docker image 를 각각의 컨테이너로 실행을 해야함으로
+   위에서 컨테이너명 중복, 포트 번호 중복에 대한 이해가 반드시 필요함.
 
 
 
+   docker exec -it h2-2 /bin/bash
 
+   cd /opt/h2/bin
+   ls -al
+   java -cp h2-2.1.214.jar org.h2.tools.Shell
