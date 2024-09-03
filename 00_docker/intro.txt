@@ -1,0 +1,27 @@
+0. 흐름
+
+   java 웹 app 개발 
+   -> image 로 빌드 ( docker 에서 사용할 수 있는 image => container 용도 ) 
+   -> 실행
+      - docker 를 이용해서 실행
+      - k8s 에서 사용할 수 있도록 image 를 배포
+        docker hub( public image registry, image 저장소 )
+   -> docker, K8S, EKS 에서 pull 해서 사용할 수 있음.
+
+1. docker 설치
+   - WSL2(Windows Subsystem For Linux) 활성화
+     docker 는 Linux 에서만 호환이 됨.
+     윈도우에서 linux 처럼 사용하기 위함.
+
+     제어판 > 프로그램 및 기능 > Windows 기능 켜기/끄기
+
+     Linux 용 Windows 하위 시스템, 가상 머신 플랫폼 를 체크
+     윈도우 재부팅
+
+   - docker 설치
+     Docker Desktop 다운 및 설치
+
+   - 리눅스 커널 업데이트
+
+   - 설치 및 실행 확인
+
