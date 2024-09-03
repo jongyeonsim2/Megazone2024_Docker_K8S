@@ -1,4 +1,7 @@
-1. 앞으로의 공부할 순서
+1. Git 주소
+   https://github.com/jongyeonsim2/Megazone2024_Docker_K8S
+
+2. 앞으로의 공부할 순서
    - docker & k8s
      . linux 수업에서 어렵다고 느끼면, 좀 더 어려울 수 있음.
      . 새로운 개념, image, container, 가상화 
