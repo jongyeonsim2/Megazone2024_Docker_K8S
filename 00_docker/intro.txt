@@ -21,6 +21,11 @@
    - docker 설치
      Docker Desktop 다운 및 설치
 
+     https://docs.docker.com/desktop/install/windows-install/
+
+     docker hub 가입
+     
+
    - 리눅스 커널 업데이트
 
    - 설치 및 실행 확인
