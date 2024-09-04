@@ -243,4 +243,20 @@
      d. 개발업무에 집중이 가능. 수정사항을 코드베이스로 변경이 용이하기 때문.
    - Dockerfile 작성 -> build -> docker image 생성 -> run -> docker container -> 서비스 시작
    - Dockerfil 명령어.
-   
+
+11. Dockerfile 작성 및 build
+   - IaC 폴더에 Dockerfile 작성.
+   - Dockerfile 있는 곳으로 이동.
+   - build => image 생성
+     build 실행
+     docker build -t mynginxapp:1.0 .
+
+     build 결과물인 image가 생성이 되었는지 확인.
+     docker images
+
+     컨테이너로 실행
+     docker run -d -p 8082:80 --name=mynginxapp mynginxapp:1.0
+
+     컨테이너 조회
+     docker container ls
+     
