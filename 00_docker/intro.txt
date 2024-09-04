@@ -259,4 +259,6 @@
 
      컨테이너 조회
      docker container ls
-     
+
+     브라우저로 nginx 서버에 접속
+     http://localhost:8082/
