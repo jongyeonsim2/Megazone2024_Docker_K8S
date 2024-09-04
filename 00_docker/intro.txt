@@ -205,3 +205,42 @@
    cd /opt/h2/bin
    ls -al
    java -cp h2-2.1.214.jar org.h2.tools.Shell
+
+9. 웹 서비스 실행을 위한 Nginx 컨테이너 실행
+   docker pull nginx:1.25
+
+   docker run --name webserver1 -d -p 8001:80 nginx:1.25
+   -d : 컨테이너를 백그라운드에서 실행
+   -p : 컨테이너의 80 번 포트를 Host OS 포트 8001 포트를 오픈해서 포트포워딩.
+
+   docker ps
+   실행되고 있는 컨테이너의 상태를 확인.
+
+   docker stats webserver1
+   컨테이너의 리소스 사용량을 실시간으로 확인. 
+
+   docker logs -f webserver1
+   접근 로그를 실시간을 확인
+   접속한 웹 브라우저에서 새로고침을 하면 접근 로그가 실시간으로 확인됨.
+
+   docker stop webserver1
+   컨테이너 종료. 웹서버 서비스 종료.
+
+   docker ps
+   컨테이너 종료 확인.
+
+10. 코드로 개발하는 컨테이너 인프라 => Dockefile => Iac(Infrasture as Code)
+   - 원하는 개발 환경을 코드로 구성하는 방법을 제공하는 것이 Dokerfile
+   - 필요성
+     a. 커맨드 기반(cli)의 인프라 구성 시 사용자의 실수 등의 휴먼 오류 가능성이 높아서.
+     b. 설치 순서와 상호 연관성 등을 고려하여 각종 라이브러리와 함께 복잡한 명령어를 작성.
+     c. 설치 이후에 잘못된 설정이 있다면 수정해야 하고, 때로는 유지보수(재설치등)도 불가피
+     d. 인프라의 공유(배포)가 편리해짐.
+   - 장점
+     a. 프로그래밍형 인프라 개발은 탄력성, 확장성, 반복성을 부여할 수 있음.
+     b. 민접성, 비요효율적인 구성, 위험 감소 와 같은 장점도 있음.
+     c. 인프라의 가독성이 높아짐.
+     d. 개발업무에 집중이 가능. 수정사항을 코드베이스로 변경이 용이하기 때문.
+   - Dockerfile 작성 -> build -> docker image 생성 -> run -> docker container -> 서비스 시작
+   - Dockerfil 명령어.
+   
