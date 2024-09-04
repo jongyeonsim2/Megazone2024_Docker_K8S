@@ -244,7 +244,7 @@
    - Dockerfile 작성 -> build -> docker image 생성 -> run -> docker container -> 서비스 시작
    - Dockerfil 명령어.
 
-11. Dockerfile 작성 및 build
+11. Dockerfile 작성 및 build - 1
    - IaC 폴더에 Dockerfile 작성.
    - Dockerfile 있는 곳으로 이동.
    - build => image 생성
@@ -262,3 +262,60 @@
 
      브라우저로 nginx 서버에 접속
      http://localhost:8082/
+
+   - Linux 의 foreground, background
+     daemon off; => foreground process
+
+     daemon on; => background process
+
+     리눅스에서 foreground 와 background 프로세스는
+     터미널과의 연결여부에 따라 구분됨.
+
+     터미널에 연결된 프로세스는 foreground 프로세스라고 하고,
+     터미널에 연결되지 않은 프로세스는 background 프로세스라고 함.
+
+     background 프로세스로 실행을 하면 키보드 입력을 내릴 수 없음.
+     foreground 프로세스로 실행을 하면 키보드 입력을 내릴 수 있음.
+
+   - Linux 의 foreground, background 테스트 실습
+     Dockerfile 의 daemon off; 를 daemon on; 으로 변경 후 build 를 진행.
+     docker build -t mynginxapp:2.0 .
+
+     docker run -d -p 8083:80 --name=mynginxapp2 mynginxapp:2.0
+
+     nginx 컨테이너 두 개가 실행되는 상태임.
+     하나는 foreground, 또 다른 하나는 background 프로세스로 실행된 상태임.
+
+     docker exec -it mynginxapp bash => 터미널로 접속이 됨.
+     docker exec -it mynginxapp2 bash => 터미널로 접속이 되지 않음.
+
+   - Dockerfile 명령어
+     FROM : 생성하려는 이미지의 베이스 이미지를 지정.
+            태그를 지정하지 않으면, lastest 로 지정됨.
+     LABEL : 이미지 작성 목적(버전, 타이틀, 설명, 라이센스 등)을 작성.
+     RUN : 설정된 베이스 이지지에 업데이트, 설치, 명령 실행등을 작성.
+           RUN apt update
+           RUN apt -y install nginx : 예로 베이스 이미지가 ubuntu.
+     CMD : 생성된 이미지를 컨테이너로 실행할 때 실행되는 명령.
+     COPY : 호스트 환경의 파일, 디렉토리를 이미지 안에 복사.
+           예로 개발된 자바 소스를 이미지에 복사하는 경우.
+              => 이런 경우라면 베이스 이미지가 openjdk 이미지를 사용.
+           build.gradle 파일등을 이미지에 복사하는 경우.
+              => RUN ./gradlew bootJar
+     EXPOSE : 컨테이너 호스스 네트워크를 통해서 들어오는 트래픽을
+             리스닝하는 포트와 프로토콜을 지정.
+            EXPOSE 80, EXPOSE 80/tcp, EXPOSE 80/update
+
+13. Dockerfile 작성 및 build - 2
+   - ubuntu 를 베이스 이미지로
+   - LABEL 작성( 작성자, 설명 )
+   - package 설치( apache2, php5, git, curl, ssh, wget )
+   - apache 환경변수 설정
+   - RUN을 이용해서 기본 웹페이지 작성.
+   - 80 번 노출
+   - 이미지가 실행이 될 때 foreground 로 실행
+
+   - 생성된 이미지로 컨테이너 실행
+
+   - 컨테이너 터미널에 접속
+     curl localhost://8007 => "Hello, Docker application."
