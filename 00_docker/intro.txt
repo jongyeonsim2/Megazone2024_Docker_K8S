@@ -297,6 +297,16 @@
            RUN apt update
            RUN apt -y install nginx : 예로 베이스 이미지가 ubuntu.
      CMD : 생성된 이미지를 컨테이너로 실행할 때 실행되는 명령.
+     ENTRYPOINT : 설정된 명령어는 Docker 컨테이너가 시잘될 때 마다 실행이됨.
+
+     CMD 와 ENTRYPOINT 의 차이점
+        Docker 컨테이너를 실행할 때 인자를 전달할 수 있음.
+        전달되는 정보가 CMD 에서는 지덩된 명령어는 무시되고,
+        전달된 새로운 인자를 이용한 새로운 명령어가 실행됨.
+
+        따라서, 반드시 실행할 명령어는 ENTRYPOINT 로 지정을 하고,
+        변경가능성이 있는 명령어는 CMD 로 사용.
+
      COPY : 호스트 환경의 파일, 디렉토리를 이미지 안에 복사.
            예로 개발된 자바 소스를 이미지에 복사하는 경우.
               => 이런 경우라면 베이스 이미지가 openjdk 이미지를 사용.
@@ -305,6 +315,7 @@
      EXPOSE : 컨테이너 호스스 네트워크를 통해서 들어오는 트래픽을
              리스닝하는 포트와 프로토콜을 지정.
             EXPOSE 80, EXPOSE 80/tcp, EXPOSE 80/update
+     
 
 13. Dockerfile 작성 및 build - 2
    - ubuntu 를 베이스 이미지로
@@ -319,3 +330,4 @@
 
    - 컨테이너 터미널에 접속
      curl localhost://8007 => "Hello, Docker application."
+
