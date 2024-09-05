@@ -59,3 +59,5 @@ EXPOSE 8080
 # java 명령어로 패키징된 jar 파일을 실행.
 # 즉, spring boot 기반의 item-service 마이크로 서비스를 실행.
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
+

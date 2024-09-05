@@ -2,7 +2,7 @@ package org.msa.item.exception;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.msa.item.dto.ResponseDTO;
-import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.json.JSONException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
