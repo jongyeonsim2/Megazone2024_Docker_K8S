@@ -1,6 +1,8 @@
 ####################### multi stage build #######################
 
-
+# docker build -t item-service-image:1.0 .
+# docker run -d -p 8080:8080 --name item-service-image-1.0 item-service-image:1.0
+# docker logs -f item-service-image-1.0
 
 ####################### stage 1 : builder statge #######################
 # 첫 번째 FROM 에 해당하는 빌드 단계
