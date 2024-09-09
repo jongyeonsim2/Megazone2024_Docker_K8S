@@ -440,3 +440,65 @@ Caused by: java.net.ConnectException: Connection refused: getsockopt
 2024-09-09T11:47:02.241+09:00  INFO 16040 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
 2024-09-09T11:47:02.259+09:00  INFO 16040 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ITEM-SERVICE/DESKTOP-VEAI621.mshome.net:item-service:5000 - deregister  status: 200
 2024-09-09T11:47:02.263+09:00  INFO 16040 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2024-09-09T12:24:39.352+09:00  INFO 10920 --- [restartedMain] org.msa.item.ItemServiceApplication      : The following 1 profile is active: "local"
+2024-09-09T12:24:39.822+09:00  INFO 10920 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-09T12:24:39.916+09:00  INFO 10920 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 88 ms. Found 1 JPA repository interfaces.
+2024-09-09T12:24:40.063+09:00  INFO 10920 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8ee75441-cf7c-3ab3-bb12-d7be195bdd33
+2024-09-09T12:24:40.442+09:00  INFO 10920 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2024-09-09T12:24:40.449+09:00  INFO 10920 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-09T12:24:40.449+09:00  INFO 10920 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-09-09T12:24:40.501+09:00  INFO 10920 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-09T12:24:40.501+09:00  INFO 10920 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1139 ms
+2024-09-09T12:24:40.518+09:00  INFO 10920 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-09T12:24:40.565+09:00  INFO 10920 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:tcp://localhost/./test user=SA
+2024-09-09T12:24:40.566+09:00  INFO 10920 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-09T12:24:40.573+09:00  INFO 10920 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:tcp://localhost/./test'
+2024-09-09T12:24:40.654+09:00  INFO 10920 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-09T12:24:40.706+09:00  INFO 10920 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2024-09-09T12:24:40.914+09:00  INFO 10920 --- [restartedMain] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-09T12:24:41.391+09:00  INFO 10920 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-09T12:24:41.397+09:00  INFO 10920 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-09T12:24:41.658+09:00  WARN 10920 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-09T12:24:42.310+09:00  INFO 10920 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-09-09T12:24:42.388+09:00  INFO 10920 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2024-09-09T12:24:42.484+09:00  WARN 10920 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-09-09T12:24:42.536+09:00  INFO 10920 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 57868 (http) with context path ''
+2024-09-09T12:24:42.537+09:00  INFO 10920 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 57868
+2024-09-09T12:24:42.541+09:00  INFO 10920 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2024-09-09T12:24:42.565+09:00  INFO 10920 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2024-09-09T12:24:42.568+09:00  INFO 10920 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-09-09T12:24:42.585+09:00  INFO 10920 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2024-09-09T12:24:42.585+09:00  INFO 10920 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2024-09-09T12:24:42.585+09:00  INFO 10920 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2024-09-09T12:24:42.585+09:00  INFO 10920 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2024-09-09T12:24:42.585+09:00  INFO 10920 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2024-09-09T12:24:42.586+09:00  INFO 10920 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2024-09-09T12:24:42.586+09:00  INFO 10920 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2024-09-09T12:24:42.766+09:00  INFO 10920 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2024-09-09T12:24:42.768+09:00  INFO 10920 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2024-09-09T12:24:42.770+09:00  INFO 10920 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-09-09T12:24:42.773+09:00  INFO 10920 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1725852282773 with initial instances count: 1
+2024-09-09T12:24:42.776+09:00  INFO 10920 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application ITEM-SERVICE with eureka with status UP
+2024-09-09T12:24:42.777+09:00  INFO 10920 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1725852282777, current=UP, previous=STARTING]
+2024-09-09T12:24:42.778+09:00  INFO 10920 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ITEM-SERVICE/DESKTOP-VEAI621.mshome.net:item-service:0: registering service...
+2024-09-09T12:24:42.826+09:00  INFO 10920 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ITEM-SERVICE/DESKTOP-VEAI621.mshome.net:item-service:0 - registration status: 204
+2024-09-09T12:24:42.863+09:00  INFO 10920 --- [restartedMain] org.msa.item.ItemServiceApplication      : Started ItemServiceApplication in 4.507 seconds (process running for 5.012)
+2024-09-09T12:25:53.417+09:00  INFO 10920 --- [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-09T12:25:53.417+09:00  INFO 10920 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-09T12:25:53.418+09:00  INFO 10920 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-09-09T12:25:53.573+09:00 DEBUG 10920 --- [http-nio-auto-1-exec-1] org.msa.item.controller.ItemController   : request add item id = 11111111
+2024-09-09T12:29:42.594+09:00  INFO 10920 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-09-09T12:34:42.606+09:00  INFO 10920 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-09-09T12:39:42.614+09:00  INFO 10920 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-09-09T12:44:42.617+09:00  INFO 10920 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-09-09T12:49:42.619+09:00  INFO 10920 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-09-09T12:54:42.633+09:00  INFO 10920 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-09-09T12:59:42.636+09:00  INFO 10920 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-09-09T13:04:42.638+09:00  INFO 10920 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-09-09T13:09:42.650+09:00  INFO 10920 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-09-09T13:16:38.754+09:00  WARN 10920 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m57s371ms759µs200ns).
+2024-09-09T13:20:00.899+09:00 DEBUG 10920 --- [http-nio-auto-1-exec-3] org.msa.item.controller.ItemController   : request add item id = 2222222
+2024-09-09T13:20:10.022+09:00  INFO 10920 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-09-09T13:25:10.028+09:00  INFO 10920 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-09-09T13:30:10.035+09:00  INFO 10920 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-09-09T13:32:04.574+09:00 DEBUG 10920 --- [http-nio-auto-1-exec-8] org.msa.item.controller.ItemController   : request add item id = 2222222
