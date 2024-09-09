@@ -433,7 +433,67 @@ docker logs -f item-service-container-1.0
         마이크로 서비스를 사용하기 위해 item 마이크로 서비스에 있는 설정들을
         Config Server 에서 관리해서 서비스가 되도록 수정할 예정.
 
+17. eureka-server
+    - 마이크로 서비스를 등록
 
+    - 실습 내용
+      a. eurka-server 구현
+      b. config-server 서버와 통신해서
+         eureka-server 의 설정 파일 정보 참조
+      c. eureka-server 기동해서
+         대시보드 화면 확인
 
+         http://localhost:8761/
 
+         현재는 eureka-server 에 등록된 마이크로 서비스 또는
+         서버 가 없으므로 
+         "Instances currently registered with Eureka" 항목에
+         "No instances available" 로 표시가 됨. => 정상임.
+
+18. eureka-server 에 마이크로 서비스 등록
+    - config-server 의 item-service 의 config 정보를 추가 설정
+    - item-service 프로젝트에 eureka client 의존관계 설정 추가
+    - config-server > eureka-server > item-service 순으로 실행
+    - eureka-server 의 대시보드에 item-service 조회가 되어야 함
+
+      http://localhost:8761/ 접속 해서 
+      "Instances currently registered with Eureka" 항목
+      item-service 마이크로 서비스가 조회.
+      => eureka-server 의 레지스트리에 item-service 가 등록되 된 상태.
+
+19. gateway-server 
+    - client 의 마이크로 서비스 요청에 대한 라우팅 설정
+    - erreka-server 의 대시보드 페이지에 접속
+      item-service, gateway-server 등록이 되어있는지 확인
+    - postman 을 사용해서 데이터 등록
+      http://localhost:8070/v1/item/add/C
+      http://localhost:8070/v1/item/add/F
+
+      local H2 db 에 접속해서 데이터가 등록되었는지 확인
+
+20. Docker container 로 실행
+    - 각 서버의 Dockerfile 작성 후 Docker build
+    - 생성된 Docker image로 컨테이너로 실행
+
+    - 서비스 환경에 따라서 설정파일을 구분해서 실행이 되도록 수정.
+      item-service-docker.yaml =>  Docker 환경에서 사용되는 설정파일 
+      item-service-local.yaml => 내 컴퓨터에서 사용되는 설정파일.
+
+      Docker image 생성을 위한 Dockerfile 을 수정해서 
+      필요한 환경에 따라 해당하는 config 파일을 선택해서 이미지로 빌드해서
+      사용될 수 있도록 적용.
+
+      Docker file에서 아래와 같이 적용하면 환경에 따른 설정 파일을 선택해서
+      빌드 할 수 있음.
+
+      rm src/main/resources/bootstrap.yaml
+      mv src/main/resources/bootstrap-docker.yaml src/main/resources/bootstrap.yaml
+
+      bootstrap-docker.yaml
+        profiles:
+          active: docker
+
+      bootstrap.yaml
+        profiles:
+          active: local
 
