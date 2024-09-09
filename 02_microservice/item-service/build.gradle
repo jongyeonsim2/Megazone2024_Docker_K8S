@@ -50,6 +50,8 @@ dependencies {
     // bootstrap.yaml 을 사용하기 위한 의존관계 설정
     implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
