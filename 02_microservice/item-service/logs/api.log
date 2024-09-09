@@ -502,3 +502,18 @@ Caused by: java.net.ConnectException: Connection refused: getsockopt
 2024-09-09T13:25:10.028+09:00  INFO 10920 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
 2024-09-09T13:30:10.035+09:00  INFO 10920 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
 2024-09-09T13:32:04.574+09:00 DEBUG 10920 --- [http-nio-auto-1-exec-8] org.msa.item.controller.ItemController   : request add item id = 2222222
+2024-09-09T13:35:10.043+09:00  INFO 10920 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-09-09T13:39:34.460+09:00  INFO 10920 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-09-09T13:39:34.463+09:00  INFO 10920 --- [Thread-7] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application ITEM-SERVICE with eureka with status DOWN
+2024-09-09T13:39:34.464+09:00  INFO 10920 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1725856774464, current=DOWN, previous=UP]
+2024-09-09T13:39:34.465+09:00  INFO 10920 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ITEM-SERVICE/DESKTOP-VEAI621.mshome.net:item-service:0: registering service...
+2024-09-09T13:39:34.482+09:00  INFO 10920 --- [Thread-7] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-09-09T13:39:34.483+09:00  INFO 10920 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ITEM-SERVICE/DESKTOP-VEAI621.mshome.net:item-service:0 - registration status: 204
+2024-09-09T13:39:34.484+09:00  INFO 10920 --- [Thread-7] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-09-09T13:39:34.497+09:00  INFO 10920 --- [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-09T13:39:34.502+09:00  INFO 10920 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-09T13:39:34.509+09:00  INFO 10920 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-09T13:39:34.510+09:00  INFO 10920 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2024-09-09T13:39:37.519+09:00  INFO 10920 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2024-09-09T13:39:37.536+09:00  INFO 10920 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ITEM-SERVICE/DESKTOP-VEAI621.mshome.net:item-service:0 - deregister  status: 200
+2024-09-09T13:39:37.546+09:00  INFO 10920 --- [Thread-7] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
