@@ -1,6 +1,6 @@
 logging:
   file:
-    name: logs/api.log
+    name: logs/item.log
   level:
     root: info
     org.msa.item: debug
@@ -28,4 +28,9 @@ eureka:
     fetch-register: true
     # service-url 은 유레카 서버의 url 정보임.
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      # 컨테이너명인 eureka-server 를 참조해서 사용.
+
+      # 컨테이너명을 통해서 연결할 수 있는 방법은
+      # msa-network 네트워크를 통해서
+      # 컨테이너가 통신을 할 수 있음.
+      defaultZone: http://eureka-server:8761/eureka

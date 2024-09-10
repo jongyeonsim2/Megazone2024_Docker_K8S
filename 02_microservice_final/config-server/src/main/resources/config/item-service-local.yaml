@@ -1,6 +1,6 @@
 logging:
   file:
-    name: logs/api.log
+    name: logs/item.log
   level:
     root: info
     org.msa.item: debug
@@ -12,7 +12,7 @@ logging:
 spring:
   config:
     import:
-      - classpath:/config/datasource-docker.yaml
+      - classpath:/config/datasource-local.yaml
 
 # Eureka Server 에 자기자신(item-service)을 등록
 eureka:

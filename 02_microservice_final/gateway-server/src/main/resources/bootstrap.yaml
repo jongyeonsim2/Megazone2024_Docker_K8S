@@ -1,9 +1,8 @@
 server:
-  #port: 5000
-  port: 0 # 사용 가능한 port 를 random 하게 설정.
+  port: 8070
 spring:
   application:
-    name: item-service
+    name: gateway-server
   profiles:
     active: local
   cloud:
