@@ -8,7 +8,7 @@ spec:
   replicas: 3
   strategy:
     type: RollingUpdate
-    RollingUpdate:
+    rollingUpdate:
       # maxSurge 옵션은
       # 자원을 좀 더 사용면서, pod 를 더 많이 실행해서
       # 업데이트 구간에서 좀 더 원활하게 업데이트가 되도록
