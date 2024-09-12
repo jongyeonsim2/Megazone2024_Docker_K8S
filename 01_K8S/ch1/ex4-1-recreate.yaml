@@ -10,7 +10,17 @@
 # kubectl explain deployment.spec.strategy
 
 # K8S 에 Deployment 를 적용(apply)
-kubectl apply -f ex4-1-recreate.yaml
+# kubectl apply -f ex4-1-recreate.yaml
+
+######## 실습 방법 ########
+터미널(power shell)을 두 개 준비.
+하나의 터미널에서 kubectl apply -f ex4-1-recreate.yaml 실행
+다른 하나의 터니널에서는 kubectl get pod
+=> 3개의 컨테이너가 생성이 되고, Running 인 상태를 확인.
+
+그리고, nginx:1.17 에서 nginx:2.0 으로 변경해서 kubectl apply 실행.
+=> 3개의 
+
 
 apiVersion: apps/v1
 kind: Deployment
