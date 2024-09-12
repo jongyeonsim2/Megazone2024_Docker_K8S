@@ -1,0 +1,33 @@
+# apiVersion 확인
+#kubectl explain deployment
+
+# Deployment 의 spec 확인
+#kubectl explain deployment.spec
+# RetricaSet => replicas, selector, template
+# strategy => 업데이트 전략
+
+# strategy 의 옵션 확인
+# kubectl explain deployment.spec.strategy
+
+# K8S 에 Deployment 를 적용(apply)
+kubectl apply -f ex4-1-recreate.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 3
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-container
+          image: nginx:1.17
