@@ -41,3 +41,5 @@ spec:
 #
 # pod 간의 컨테이너 호출
 # my-localhost-pod(nginx) -> my-service:9080 -> my-nginx-deploy(nginx)
+#
+# kubectl exec my-localhost-pod -c nginx-container -- curl my-service:9080
