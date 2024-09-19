@@ -26,7 +26,27 @@ spec:
           # 컨테이너에서 사용할 working directory 경로를 지정
           mountPath: "/data/pv"
 # apply
-#kubectl apply -f ex12-my-pv-pod.yaml
+# kubectl apply -f ex12-my-pv-pod.yaml
+
+# nginx container 를 통해서 working directory 에서 파일 생성
+# nginx linux shell 접근
+# kubectl exec my-pv-pod -- bash -c "echo hello! > /data/pv/hello.txt"
+
+# persistent volume에 생성된 파일 확인
+# kubectl exec my-pv-pod -- cat /data/pv/hello.txt
+
+# pvc 를 사용하던 pod 를 삭제
+# kubectl delete pod my-pv-pod
+
+# pod 가 삭제된 후에 생성했었던 파일 확인
+# pod 가 삭제가 되었으므로, 확인 불가
+# kubectl exec my-pv-pod -- cat /data/pv/hello.txt
+
+# pod 를 다시 생성( yaml apply )
+# kubectl apply -f ex12-my-pv-pod.yaml
+
+# pod 가 삭제된 후에 생성했었던 파일 확인
+# kubectl exec my-pv-pod -- cat /data/pv/hello.txt
 
 # 지금까지 K8S 에서 했던 내용 정리
 # 1. yaml 에 정의된 pod spec 으로 K8S 적용. ( 선언형, apply )
