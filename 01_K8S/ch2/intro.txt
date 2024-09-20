@@ -23,6 +23,35 @@
 4. pod(container) 의 update 전략 추가
    factorial-app-deploy2.yaml
 
+5. spring boot 프로젝트에
+   5.1 probe 설정
+       GetMapping 설정
+   5.2 factorial() 메소드
+       GetMapping 설정
+   5.3 jib build
+       0.0.1 -> 0.0.2 로 변경
+   5.4 Deployment 객체 생성
+       0.0.2 image 사용
+   5.5 Pod 의 0.0.2 image 버전 확인 & running 상태
+       kubectl -n factorial get pods
+       kubectl -n factorial describe pod POD_ID
+   5.6 GetMapping test
+       kubectl -n factorial exec -it POD_ID -- bash
+
+       curl localhost:8080/factorial?=10
+       curl localhost:8080/factorial?=-1
+
+       curl localhost:8080/probe/startup
+       curl localhost:8080/probe/ready
+       curl localhost:8080/probe/live
+
+       
+
+
+
+
+
+
 5. Probe 추가
    factorial-app-deploy3.yaml
 
@@ -48,7 +77,7 @@
         네트워크에서 분리를 할 지를 결정하는 Check Probe 임.
 
      livenessProbe : 
-        컨테이너가 정상인지 비정산인지 여부를 Check Probe 임.
+        컨테이너가 정상인지 비정상인지 여부를 Check Probe 임.
 
    Probe 설정 고려 사항 : 
      - readinessProbe 는 livenessProbe 에 비해 보통 더 민감하게 설정
