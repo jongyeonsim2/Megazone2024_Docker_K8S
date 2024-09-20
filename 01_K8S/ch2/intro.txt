@@ -45,7 +45,41 @@
        curl localhost:8080/probe/ready
        curl localhost:8080/probe/live
 
-       
+6. graceful shutdown       
+   6.1 yaml
+       terminationGracePeriodSeconds 설정 추가
+
+       보통은 30 초가 꽤 쓸만하지만, 설정하지 않으면 30초지만,
+       실습을 위해서 60 으로 설정
+   6.2 spring boot
+       server:
+            shutdown: graceful
+        
+        application 이 SIGTERM 신호를 받게 되면, 작업을 정리하고
+        SIGKILL 신호가 오기 전에 먼저 종료가 되면,
+        자연스럽게(graceful) 종료가 됨.
+        SIGTERM 신호를 받게 되면, 더 이상 API 요청을 받지 않는
+        상태가 됨.
+ 
+        spring:
+        lifecycle:
+            timeout-per-shutdown-phase: 50
+
+        기본적으로 spring 도 30초가 지나고 나서도
+        작업이 정리가 되지 않으면 강제로 스스로 종료를 해버림.
+        그런데, 여기 60 초로 설정을 했고,
+        ( yaml terminationGracePeriodSeconds: 60 )
+        실제로 spring application 에 주어진 시간은
+        10 초 정도 sleep 한 후에 애플리케이션 종료 신호를 보내기 때문에
+        60초에서 10초를 제외한 50초로 설정
+
+        10 초 정도 에 대한 설정은 yaml 파일의
+        "04.lifecycle hook 추가" 에 대한 내용임.
+
+
+
+7. probe 설정
+
 
 
 
