@@ -13,6 +13,8 @@ spec:
           # 보내겠다는 의미
           - pathType: Prefix
             # http://localhost/factorial/10
+            # http://localhost/factorial/11
+            # localhost/factorial/11?key=abcd-1234-5678
             path: /factorial
             backend:
               service:

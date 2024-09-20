@@ -22,7 +22,9 @@ public class FactorialCacheController {
     @Value("${API_KEY}")
     private String apiKey;
 
-    // http://localhost/factorial/10&key=123
+    // http://localhost/factorial/10
+    // http://localhost/factorial/11
+    // localhost/factorial/11?key=abcd-1234-5678
     @GetMapping("/factorial/{n}")
     public String calculateFactorial(@PathVariable("n") int number,
                                      @RequestParam(value="key", required=false) String key) {
