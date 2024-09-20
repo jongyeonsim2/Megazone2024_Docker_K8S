@@ -1,3 +1,6 @@
+
+       ###################### factorial-app start ######################
+
 1. 실습 환경 설정 - Ingress 설정
    1.1 kind.sigs.k8s.io 에 접속
    1.2 User Guide > Ingress 페이지로 이동
@@ -78,15 +81,7 @@
 
 
 
-7. probe 설정
-
-
-
-
-
-
-
-5. Probe 추가
+7. Probe 추가
    factorial-app-deploy3.yaml
 
    Probe : 
@@ -119,3 +114,21 @@
      - Probe 설정에 따라 배포에 걸리는 시간도 달라짐.
      - Probe 체크는 컨테이너 내부의 프로세스에 한정해야 하며
        부담이 가는 동작이 아니어야 함.
+
+
+       ###################### factorial-app end ######################
+
+       ###################### factorial-cache-app start ######################
+
+K8S 의 ConfigMap, Secret 객체 적용
+       - ConfigMap : 다국어지원
+       - Secret : 명령형으로 생성
+                  api-key 용으로 사용
+K8S 의 Service 객체 적용
+       - factorial-app 을 참조
+K8S 의 Ingerss 객체 적용
+       - postman 에서 api 사용
+
+
+
+       ###################### factorial-cache-app end ######################
