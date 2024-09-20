@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/probe")
 public class HealthcheckController {
 
+    /**
+     * K8S 가 호출하는 것임. 사용자가 호출하는 API 가 아님.
+     */
+
     private final Logger logger =
             LoggerFactory.getLogger(HealthcheckController.class);
 
