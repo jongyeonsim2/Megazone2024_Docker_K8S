@@ -16,3 +16,43 @@
 
      => Ingress 설치
 
+3. spring boot jib plugin in
+   java image build -> doker hub
+   K8S Deployment 객체 생성해서, pod 로 만들어서 사용
+
+4. pod(container) 의 update 전략 추가
+   factorial-app-deploy2.yaml
+
+5. Probe 추가
+   factorial-app-deploy3.yaml
+
+   Probe : 
+     K8S 가 Pod 정확하게는 Container 의 상태를 알아내기 위한 수단.
+
+     K8S 가 container 의 상태를 확인하고 문제가 있을 경우에는
+     재시작을 시켜주거나 하는 작업을 자동으로 해줌.
+
+     Probe 가 없다면, K8S 는 단순히 컨테이너의 프로세스가 살았는지
+     죽었는지에 대한 정보만으로만 컨테이너 재시작과 같은 작업을 해주게 됨.
+
+     애플리케이션이 비정상적으로 동작한다던지 느려진다던지, 서서히
+     머춰버린다던지 등등의 이런 경우를 K8S 의 Probe 를 사용하지 않는다면
+     K8S의 핵심 기능을 사용하지 않고 있는것이라고 할 수 있음.
+
+   Probe 종류 : 
+     startupProbe : 
+        다른 Probe 를 실행할지 말지를 결정하는 Check Probe 임.
+
+     readinessProbe : 
+        컨테이너를 네트워크에 연결해서 트래픽을 전달을 받을 지 아니면,
+        네트워크에서 분리를 할 지를 결정하는 Check Probe 임.
+
+     livenessProbe : 
+        컨테이너가 정상인지 비정산인지 여부를 Check Probe 임.
+
+   Probe 설정 고려 사항 : 
+     - readinessProbe 는 livenessProbe 에 비해 보통 더 민감하게 설정
+     - 컨테이너의 재시작이 서비스에 어떤 영향을 주는지 고려해서 결정해야 함.
+     - Probe 설정에 따라 배포에 걸리는 시간도 달라짐.
+     - Probe 체크는 컨테이너 내부의 프로세스에 한정해야 하며
+       부담이 가는 동작이 아니어야 함.
