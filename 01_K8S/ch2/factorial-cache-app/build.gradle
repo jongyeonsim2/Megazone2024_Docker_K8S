@@ -34,7 +34,7 @@ jib {
     }
     to {
         image = "diversim90/factorial-cache-app-for-k8s"
-        tags = ['latest', '0.0.2']
+        tags = ['latest', '0.0.3']
     }
     container {
         creationTime = "USE_CURRENT_TIMESTAMP"
