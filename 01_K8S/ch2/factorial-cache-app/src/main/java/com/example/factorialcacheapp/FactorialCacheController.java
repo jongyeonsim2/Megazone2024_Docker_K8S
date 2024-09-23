@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
+
 @RestController
 public class FactorialCacheController {
 
@@ -21,6 +23,12 @@ public class FactorialCacheController {
      */
     @Value("${API_KEY}")
     private String apiKey;
+
+    private FactorialCalculateService calculateService;
+
+    public FactorialCacheController(FactorialCalculateService calculateService) {
+        this.calculateService = calculateService;
+    }
 
     // http://localhost/factorial/10
     // http://localhost/factorial/11
@@ -37,9 +45,15 @@ public class FactorialCacheController {
             }
         }
 
+        /**
+         * factorial 계산 service 사용
+         * => K8S 클러스터 상에 있는 factorial-app-service 를 사용하기 위함.
+         */
+        BigDecimal result = calculateService.getCalculateResult(number);
+
         return switch (language) {
-            case "ko" -> number + " 팩토리얼은" + number + "입니다.";
-            case "en" -> "the factorial of " + number + " is " + number;
+            case "ko" -> number + " 팩토리얼은 " + result + "입니다.";
+            case "en" -> "the factorial of " + number + " is " + result;
             default -> "Unknown language.";
         };
     }

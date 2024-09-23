@@ -235,3 +235,5 @@ K8S 의 Ingerss 객체 적용
        => 9.2 에서 구현된 기능을 사용하는 서비스 구현
        => 구현된 서비스를 controller 에 사용
 
+   9.4 jib 실행해서
+       docker repository 에 push 함.
