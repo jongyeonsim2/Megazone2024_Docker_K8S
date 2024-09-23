@@ -193,7 +193,9 @@
 
        ###################### factorial-app end ######################
 
+
        ###################### factorial-cache-app start ######################
+8. factorial-cache-app 관련 구현
 
 K8S 의 ConfigMap, Secret 객체 적용
        - ConfigMap : 다국어지원
@@ -215,3 +217,21 @@ K8S 의 Ingerss 객체 적용
 
 
        ###################### factorial-cache-app end ######################
+
+
+9. factorial-app 과 factorial-cache-app 연결 구현
+   9.1 두 application 간 연결
+       - factorial-app 의 K8S 의 service 객체 구현 및 적용
+   9.2 factorial-app 의 factorial 계산 서비스 구현
+       - java 에서 restClient 구현
+         9.1 에서 적용된 service 객체 활용
+              
+             factorial-app-service:8080 사용해야 함.
+             => K8S 기반의 MSA 를 시작해볼려고 함.
+             => 서비스 분할을 어떻게 할 것인가?
+
+   9.3 factorial-cache-app 에서 
+       factorial-app 의 factorial 계산 서비스 사용
+       => 9.2 에서 구현된 기능을 사용하는 서비스 구현
+       => 구현된 서비스를 controller 에 사용
+
