@@ -25,7 +25,7 @@ spec:
       ######## 03.graceful shutdown - end ########
       containers:
         - name: factorial
-          image: diversim90/factorial-app-for-k8s:0.0.3
+          image: diversim90/factorial-app-for-k8s:0.0.7
       ######## 04.lifecycle hook 추가 - start ########
           lifecycle:
             preStop: # 컨테이너가 종료( 계획적인 의도에 따른 종료, 예. rollingupdate 등 )

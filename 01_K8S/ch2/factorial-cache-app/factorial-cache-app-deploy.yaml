@@ -22,7 +22,7 @@ spec:
       terminationGracePeriodSeconds: 60
       containers:
         - name: factorial-cache-app
-          image: diversim90/factorial-cache-app-for-k8s:0.0.3
+          image: diversim90/factorial-cache-app-for-k8s:0.0.4
           env:
             - name: APP_LANGUAGE
               valueFrom:

@@ -235,5 +235,27 @@ K8S 의 Ingerss 객체 적용
        => 9.2 에서 구현된 기능을 사용하는 서비스 구현
        => 구현된 서비스를 controller 에 사용
 
-   9.4 jib 실행해서
-       docker repository 에 push 함.
+   9.4 jib 실행해서 docker repository 에 push 함.
+
+       - factorial-app
+         버전으로 0.0.3 -> 0.0.4 로 변경.
+         변경 대상 파일은 아래의 두 파일임.
+
+         build.gradle
+         factorial-app-deploy3.yaml
+
+       - factorial-cache-app
+         버전으로 0.0.3 -> 0.0.4 로 변경.
+         변경 대상 파일은 아래의 두 파일임.
+         
+         build.gradle
+         factorial-cache-app-deploy.yaml
+
+   9.5 두 app 에 대해서 deployment 재적용.
+       - 각 pod의 container 의 버전이 0.0.4 인지 확인.
+
+   9.6 postman 으로 테스트
+       아래의 3가지 케이스에 대해서 테스트
+       http://localhost/factorial/10
+       http://localhost/factorial/11
+       localhost/factorial/11?key=abcd-1234-5678
