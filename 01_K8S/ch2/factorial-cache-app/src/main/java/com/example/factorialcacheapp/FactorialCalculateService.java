@@ -28,17 +28,17 @@ public class FactorialCalculateService {
          *  동일한 네트워크상에 있으므로
          *  K8S Service 객체명(type : Cluster IP)으로 접속이 가능함.
          */
-        /*
-        factorialClient.get()
+
+        String result = factorialClient.get()
                 .uri("http://factorial-app-service:8080/factorial?n="+n)
                 .retrieve()
-                .onStatus(HttpStatusCode::isError, ((request, response) ->
-                        ))
+                .onStatus(HttpStatusCode::isError,
+                            (request, response) -> {
+                                throw new RuntimeException("invalid server response " +
+                                                            response.getStatusText());
+                            })
+                .body(String.class);
 
-         */
-
-        BigDecimal result = BigDecimal.ZERO;
-
-        return result;
+        return new BigDecimal(result);
     }
 }
