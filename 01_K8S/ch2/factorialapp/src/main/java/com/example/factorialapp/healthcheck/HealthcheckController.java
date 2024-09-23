@@ -20,6 +20,9 @@ public class HealthcheckController {
     private final Logger logger =
             LoggerFactory.getLogger(HealthcheckController.class);
 
+    /**
+     * K8S 의 startupProbe 가 호출하는 endPoint.
+     */
     @GetMapping("/startup")
     public String startupCheck() {
         /**
@@ -32,12 +35,18 @@ public class HealthcheckController {
         return "Good to go";
     }
 
+    /**
+     * K8S 의 readinessProbe 가 호출하는 endPoint.
+     */
     @GetMapping("/ready")
     public String readinessCheck() {
         logger.info("Readiness probe check");
         return "Ready";
     }
 
+    /**
+     * K8S 의 livenessProbe 가 호출하는 endPoint.
+     */
     @GetMapping("/live")
     public String livenessCheck() {
         logger.info("liveness probe check");

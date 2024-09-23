@@ -97,13 +97,57 @@
      머춰버린다던지 등등의 이런 경우를 K8S 의 Probe 를 사용하지 않는다면
      K8S의 핵심 기능을 사용하지 않고 있는것이라고 할 수 있음.
 
-   Probe 종류 : 
+   Probe 종류에 간단한 설명 : 
      startupProbe : 
         다른 Probe 를 실행할지 말지를 결정하는 Check Probe 임.
 
      readinessProbe : 
-        컨테이너를 네트워크에 연결해서 트래픽을 전달을 받을 지 아니면,
+        컨테이너를 K8S 클러스터의 네트워크에 연결해서 
+        트래픽을 전달을 받을 지 아니면,
         네트워크에서 분리를 할 지를 결정하는 Check Probe 임.
+
+     livenessProbe : 
+        컨테이너가 정상인지 비정상인지 여부를 Check Probe 임.
+
+   Probe 종류에 대한 상세 설명 : 
+     startupProbe : 
+        다른 Probe 를 실행할지 말지를 결정하는 Check Probe 임.
+
+        startupProbe 실행이 성공이 되어야만, readinessProbe 나
+        livenessProbe check 가 시작된다고 할 수 있음.
+
+        그래서, startupProbe 는 컨테이너가 기동이 되었을 때,
+        먼저 주기적으로 컨테이너의 상태를 체크하고,
+        컨테이너의 애플리케이션이 준비가 완료되었을 때,
+        그 때 부터 다른 Probe 를 실행시켜주는 역할을 함.
+
+        설정 옵션으로 periodSeconds, failureThreadhold 가 있는데,
+        failureThreadhold 에 설정된 횟수 이상을 실패했을 경우,
+        K8S 는 이 애플리케이션이 초기화가 정상적으로 되지 않았다고
+        기동하다가 문제가 발생했었다고 판단하고, container 를
+        restart policy 에 지정된 정책으로 재시작을 시켜버리거나
+        종료를 시켜버리게 됨.
+
+        그래서, 
+        initialDelaySeconds + failureThreadhold * periodSeconds
+        의 계산 결과 시간내에는 container 애플리케이션이 충분히
+        기동이 될 수 있도록 해야함.
+
+        보통은 이 수 치를 꽤 넉넉하게 설정해서 사용.
+        애플리케이션이 30초가 초기화에 걸린다고 한다면 startupProbe 에서
+        실패하는 기준은 60초 정도로 설정해주는 경우도 있음.
+
+     readinessProbe : 
+        컨테이너를 K8S 클러스터의 네트워크에 연결해서 
+        트래픽을 전달을 받을 지 아니면,
+        네트워크에서 분리를 할 지를 결정하는 Check Probe 임.
+
+        기술적으로 이야기 한다면, 해당 Pod 를 EndpointSlice 에
+        추가할 지 뺄지 여부를 판단하는데 사용된다고 생각하면 됨.
+
+        만약에 컨테이너 중 하나가 readinessProbe check 에 실패했다면,
+        해당 Pod 는 모든 컨테이너가 모두 ready 상태에 도달하기 전 까지는
+        EndpointSlice 에 잠시 빠지고 트래픽 분배를 받지 않는 상태가 됨.
 
      livenessProbe : 
         컨테이너가 정상인지 비정상인지 여부를 Check Probe 임.
