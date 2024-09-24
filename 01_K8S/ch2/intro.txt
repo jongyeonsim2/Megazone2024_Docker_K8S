@@ -222,6 +222,7 @@ K8S 의 Ingerss 객체 적용
 9. factorial-app 과 factorial-cache-app 연결 구현
    9.1 두 application 간 연결
        - factorial-app 의 K8S 의 service 객체 구현 및 적용
+       
    9.2 factorial-app 의 factorial 계산 서비스 구현
        - java 에서 restClient 구현
          9.1 에서 적용된 service 객체 활용
@@ -259,3 +260,19 @@ K8S 의 Ingerss 객체 적용
        http://localhost/factorial/10
        http://localhost/factorial/11
        localhost/factorial/11?key=abcd-1234-5678
+
+10. 03_microservice_final 프로젝트의 K8S 이행 작업
+
+   기존에는 Docker 를 활용한 Container 기반의 웹 애플리케이션.
+   => Container 로 실행될 이미지까지는 작성이 됨.
+
+   K8S 클러스터 기반의 웹 애플리케이션으로 이행.
+
+   최종적으로는 postman으로 REST API 테스트가 되도록 이행하면 됨.
+
+   - 어렵다고 생각된다면.
+     문제점 리스트 작성 후 하나씩 해결해나가면 됨.
+
+   - 단, 수업시간은 엄수!!!!
+
+
