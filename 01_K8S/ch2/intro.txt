@@ -263,6 +263,9 @@ K8S 의 Ingerss 객체 적용
 
 10. 03_microservice_final 프로젝트의 K8S 이행 작업
 
+   03_microservice_final 프로젝트 GitHub 주소
+   https://github.com/jongyeonsim2/Megazone2024_Docker_K8S/tree/master/03_microservice_final
+
    기존에는 Docker 를 활용한 Container 기반의 웹 애플리케이션.
    => Container 로 실행될 이미지까지는 작성이 됨.
 
