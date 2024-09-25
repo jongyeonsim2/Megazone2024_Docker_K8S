@@ -304,3 +304,38 @@ K8S 의 Ingerss 객체 적용
  
      첨부 파일 :  K8S이행과제 - 홍길동.zip
      내용 :       작성하지 않아도 됨
+
+11. 03_microservice_final 프로젝트의 K8S 이행 작업
+
+    목적 : 메가존클라우드 최종 합격
+           현실 : 수료인원의 50%( 전공자, 비전공자 )
+                  메가존클라우드 관계사( 5:5 )
+
+           Cloud + K8S + Java 개발 => 대용량 서비스
+           (EKS, ECS)
+
+           1. 자바 개발
+           2. 운영
+           3. 개선
+
+    어제 과제 : config-server, eureka-server, gateway-server, item-service : docker 기반
+              K8S + config-server + item-service + H2/MySql : 배운데로 마이그레이션 함.
+              잘 했음. 단, 모두 동일함.
+
+    오늘 과제 : config-server, eureka-server, gateway-server, item-service 별도의 서버로 운영.
+               K8S + H2/MySql + factorial/factorial-cach-eapp
+
+               - Postman 으로 통신
+               - 시스템 아키텍처
+                 pod 까지 작성해서, 통신흐름이 보이도록 작성.
+               - 시스템 아키텍처 에 대한 설명
+               - 완료 한 부분
+                 기본상태 : K8S + config-server + item-service + H2/MySql
+                 추가된 부분 : 
+
+    사이드 프로젝트 : EKS 로 migration + Postman 으로 통신
+                     ECS 로 migration + Postman 으로 통신
+
+    사이드 프로젝트 : 주제를 선정해서 진행 + MSA + 카프카 관련의 이벤트 처리
+
+
